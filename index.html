@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>KeeWe</title>
+    <link rel="shortcut icon" type="image/x-icon" href="./assets/favicon.ico" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -11,6 +12,11 @@
       rel="stylesheet"
     />
     <style>
+      *,
+      *::after,
+      *::before {
+        box-sizing: border-box;
+      }
       html,
       body {
         margin: 0;
@@ -35,60 +41,121 @@
         font-family: "Merriweather", serif;
         font-weight: 500;
         font-style: normal;
-        margin: 0;
+        margin: 10px 0;
         padding: 0;
         font-size: 17px;
       }
-      .container {
-        height: 100vh;
-        width: 100%;
-        justify-content: center;
-        align-items: center;
-        display: flex;
-        color: #fff;
-        background: rgb(122, 0, 230);
-        background: rgb(122, 0, 230);
-        background: linear-gradient(
-          180deg,
-          rgba(122, 0, 230, 1) -11%,
-          rgba(62, 0, 135, 1) 85%
-        );
+      .bg-video-container,
+      .bg-overlay {
+        position: fixed;
+        right: 0;
+        bottom: 0;
+        min-width: 100%;
+        min-height: 100%;
+        width: auto;
+        height: auto;
+        z-index: -1;
+        overflow: hidden;
       }
-      .inner {
-        justify-content: center;
-        align-items: center;
+      .bg-overlay {
+        z-index: 1;
+        background-color: rgba(0, 0, 0, 0.4);
+      }
+      .bg-video {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        right: 0;
+        bottom: 0;
+        min-width: 100%;
+        min-height: 100%;
+        width: auto;
+        height: auto;
+      }
+      .content {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: #fdfdfd;
+        z-index: 2;
+        text-align: center;
+        background-color: rgba(0, 0, 0, 0.55);
+        border-radius: 10px;
+        width: 750px;
+        max-width: 90%;
+        padding: 20px;
+      }
+      .headline {
+        font-size: 50px;
+        margin-bottom: 15px;
+      }
+      .intro {
+        text-align: center;
+      }
+
+      .header {
+        position: relative;
+        z-index: 9999;
+        padding: 15px;
+        max-width: 1280px;
+        margin: 0 auto;
+      }
+
+      .container {
         display: flex;
-        flex-direction: column;
+        justify-content: center;
       }
 
       .logo {
         display: flex;
         align-items: center;
-        width: 80px;
-        margin-bottom: 10px;
       }
 
-      .headline {
-        font-size: 50px;
-        padding-top: 20px;
-        padding-bottom: 20px;
+      .logo-img {
+        width: 35px;
       }
-      .intro {
-        text-align: center;
+
+      .logo-txt {
+        color: #fff;
+        padding: 5px 0 0 10px;
+        font-size: 21px;
+      }
+
+      @media screen and (min-width: 992px) {
+        .container {
+          justify-content: flex-start;
+        }
+
+        .content {
+          padding-top: 40px;
+          padding-bottom: 40px;
+        }
       }
     </style>
   </head>
   <body>
-    <div class="container">
-      <div class="inner">
+    <div class="bg-video-container">
+      <video autoplay muted loop class="bg-video">
+        <source src="./assets/bgvideo.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+    </div>
+    <div class="bg-overlay"></div>
+    <header class="header">
+      <div class="container">
         <div class="logo">
-          <img src="./logo.png" alt="KeeWe" />
+          <img src="./assets/logo.png" alt="KeeWe" class="logo-img" />
+          <h2 class="logo-txt">KeeWe</h2>
         </div>
-        <h3 class="headline">Coming Soon</h3>
-        <p class="intro">
-          We are building something amazing and exciting for you!
-        </p>
       </div>
+    </header>
+    <div class="content">
+      <h3 class="headline">Coming Soon</h3>
+      <p class="intro">
+        We are building something amazing and exciting for you!
+      </p>
     </div>
   </body>
 </html>
