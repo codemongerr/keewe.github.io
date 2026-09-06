@@ -271,6 +271,72 @@ section { position: relative; }
 
 .nav-cta { display: inline-flex; gap: 10px; }
 
+/* ---------- language switcher ---------- */
+
+/* the page is hidden for the moment a non-English dictionary takes to
+   arrive; assets/i18n.js drops the class as soon as it applies, and on a
+   timeout regardless, so this can never strand the page */
+.i18n-loading body { visibility: hidden; }
+
+.lang-switch { position: relative; }
+.lang-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  height: 40px;
+  padding: 0 11px;
+  border-radius: var(--r-pill);
+  border: 1.5px solid var(--line);
+  background: var(--paper);
+  color: var(--ink-2);
+  font: inherit;
+  font-size: 14.5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background .18s ease, color .18s ease, border-color .18s ease;
+}
+.lang-btn:hover { background: var(--brand-tint); border-color: var(--brand-tint); color: var(--brand-700); }
+.lang-btn svg { width: 17px; height: 17px; flex: none; }
+.lang-chev { width: 13px; height: 13px; opacity: .6; transition: transform .18s ease; }
+.lang-switch.is-open .lang-chev { transform: rotate(180deg); }
+.lang-code { line-height: 1; }
+
+.lang-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  z-index: 120;
+  min-width: 178px;
+  display: flex;
+  flex-direction: column;
+  padding: 6px;
+  border-radius: 14px;
+  border: 1px solid var(--line);
+  background: var(--paper);
+  box-shadow: var(--shadow-md);
+}
+/* display:flex above would otherwise beat the UA's [hidden] rule */
+.lang-menu[hidden] { display: none; }
+
+.lang-item {
+  display: block;
+  width: 100%;
+  padding: 10px 12px;
+  border: 0;
+  border-radius: 9px;
+  background: none;
+  color: var(--ink-2);
+  font: inherit;
+  font-size: 15px;
+  font-weight: 600;
+  text-align: left;
+  cursor: pointer;
+  transition: background .16s ease, color .16s ease;
+}
+.lang-item:hover { background: var(--brand-tint); color: var(--brand-700); }
+.lang-item.is-on { color: var(--brand); }
+.lang-item.is-on::after { content: "\2713"; float: right; }
+
 .burger {
   display: none;
   width: 44px;
@@ -1227,6 +1293,8 @@ section { position: relative; }
 @media (max-width: 860px) {
   .nav-links, .nav-cta { display: none; }
   .burger { display: grid; }
+  .lang-switch { margin-left: auto; }
+  .lang-btn { height: 44px; }
   .site-header.nav-open .nav-links {
     display: flex;
     position: absolute;

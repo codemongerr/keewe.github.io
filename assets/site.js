@@ -4,6 +4,31 @@
 
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  /* ---------- analytics: CTA clicks -> dataLayer ---------- */
+  /* Every element carrying data-cta pushes one `cta_click` event. Pick it up in
+     GTM with a Custom Event trigger named cta_click. */
+  window.dataLayer = window.dataLayer || [];
+
+  var ctaFor = function (node) {
+    /* not using closest(): the click target is often an <svg> inside the link */
+    while (node && node !== document) {
+      if (node.nodeType === 1 && node.hasAttribute('data-cta')) return node;
+      node = node.parentNode;
+    }
+    return null;
+  };
+
+  document.addEventListener('click', function (e) {
+    var el = ctaFor(e.target);
+    if (!el) return;
+    window.dataLayer.push({
+      event: 'cta_click',
+      cta_id: el.getAttribute('data-cta'),
+      cta_location: el.getAttribute('data-cta-location') || 'unknown',
+      link_url: el.getAttribute('href') || ''
+    });
+  });
+
   /* ---------- sticky header shadow ---------- */
   var header = document.querySelector('.site-header');
   if (header) {
