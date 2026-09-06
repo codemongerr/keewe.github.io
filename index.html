@@ -2,163 +2,769 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>KeeWe</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>KeeWe — Find your flat and your flatmates</title>
+    <meta
+      name="description"
+      content="KeeWe matches you with flats and flatmates near you in Aotearoa. Swipe on rooms and people, match, chat and book a viewing — all in one app."
+    />
+    <meta name="theme-color" content="#7a00e6" />
+    <link rel="canonical" href="https://www.keewe.co.nz/" />
+
+    <!-- ==========================================================
+         LINKS TO SWAP WHEN THE APP GOES LIVE
+         1. Waitlist form — search this file for  WAITLIST-FORM
+         2. Beta form     — search this file for  BETA-FORM
+         3. App Store     — search this file for  APPSTORE-LINK
+         4. Google Play   — search this file for  PLAYSTORE-LINK
+         ========================================================== -->
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="KeeWe" />
+    <meta property="og:title" content="KeeWe — Find your flat and your flatmates" />
+    <meta
+      property="og:description"
+      content="Swipe on rooms and people near you, match, chat and book a viewing. Flatting, without the group-chat chaos."
+    />
+    <meta property="og:url" content="https://www.keewe.co.nz/" />
+    <meta property="og:image" content="https://www.keewe.co.nz/assets/app-icon.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+
     <link rel="shortcut icon" type="image/x-icon" href="./assets/favicon.ico" />
+    <link rel="apple-touch-icon" href="./assets/app-icon.png" />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
-    <style>
-      *,
-      *::after,
-      *::before {
-        box-sizing: border-box;
-      }
-      html,
-      body {
-        margin: 0;
-        padding: 0;
-      }
-      img {
-        max-width: 100%;
-      }
-      h1,
-      h2,
-      h3,
-      h4,
-      h5,
-      h6 {
-        font-family: "Merriweather", serif;
-        font-weight: 700;
-        font-style: normal;
-        margin: 0;
-        padding: 0;
-      }
-      p {
-        font-family: "Merriweather", serif;
-        font-weight: 500;
-        font-style: normal;
-        margin: 10px 0;
-        padding: 0;
-        font-size: 17px;
-      }
-      .bg-video-container,
-      .bg-overlay {
-        position: fixed;
-        right: 0;
-        bottom: 0;
-        min-width: 100%;
-        min-height: 100%;
-        width: auto;
-        height: auto;
-        z-index: -1;
-        overflow: hidden;
-      }
-      .bg-overlay {
-        z-index: 1;
-        background-color: rgba(0, 0, 0, 0.4);
-      }
-      .bg-video {
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
-        right: 0;
-        bottom: 0;
-        min-width: 100%;
-        min-height: 100%;
-        width: auto;
-        height: auto;
-      }
-      .content {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        color: #fdfdfd;
-        z-index: 2;
-        text-align: center;
-        background-color: rgba(0, 0, 0, 0.55);
-        border-radius: 10px;
-        width: 750px;
-        max-width: 90%;
-        padding: 20px;
-      }
-      .headline {
-        font-size: 35px;
-        margin-bottom: 15px;
-      }
-      .intro {
-        text-align: center;
-      }
+    <link rel="stylesheet" href="./assets/site.css" />
 
-      .header {
-        position: relative;
-        z-index: 9999;
-        padding: 15px;
-        max-width: 1280px;
-        margin: 0 auto;
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "MobileApplication",
+        "name": "KeeWe",
+        "applicationCategory": "LifestyleApplication",
+        "operatingSystem": "iOS, Android",
+        "url": "https://www.keewe.co.nz/",
+        "description": "KeeWe matches you with flats and flatmates near you in Aotearoa. Swipe on rooms and people, match, chat and book a viewing."
       }
-
-      .container {
-        display: flex;
-        justify-content: center;
-      }
-
-      .logo {
-        display: flex;
-        align-items: center;
-      }
-
-      .logo-img {
-        width: 35px;
-      }
-
-      .logo-txt {
-        color: #fff;
-        padding: 5px 0 0 10px;
-        font-size: 21px;
-      }
-
-      @media screen and (min-width: 992px) {
-        .headline {
-          font-size: 50px;
-        }
-        .container {
-          justify-content: flex-start;
-        }
-
-        .content {
-          padding-top: 40px;
-          padding-bottom: 40px;
-        }
-      }
-    </style>
+    </script>
   </head>
+
   <body>
-    <div class="bg-video-container">
-      <video autoplay muted loop playsinline class="bg-video">
-        <source src="./assets/bgvideo.mp4" type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
-    </div>
-    <div class="bg-overlay"></div>
-    <header class="header">
-      <div class="container">
-        <div class="logo">
-          <img src="./assets/logo.png" alt="KeeWe" class="logo-img" />
-          <h2 class="logo-txt">KeeWe</h2>
+    <a class="skip" href="#main">Skip to content</a>
+
+    <!-- ================= header ================= -->
+    <header class="site-header">
+      <div class="wrap nav">
+        <a class="brand" href="./">
+          <img src="./assets/logo-mark.png" alt="" width="34" />
+          KeeWe
+        </a>
+
+        <ul class="nav-links">
+          <li><a href="#how">How it works</a></li>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#who">Who it's for</a></li>
+          <li><a href="#safety">Safety</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+
+        <div class="nav-cta">
+          <a class="btn btn-primary btn-sm" href="#get-the-app">Get the app</a>
         </div>
+
+        <button class="burger" type="button" aria-label="Menu" aria-expanded="false">
+          <span></span>
+        </button>
       </div>
     </header>
-    <div class="content">
-      <h3 class="headline">Coming Soon</h3>
-      <p class="intro">
-        We are building something amazing and exciting for you!
-      </p>
-    </div>
+
+    <main id="main">
+      <!-- ================= hero ================= -->
+      <section class="hero">
+        <div class="wrap hero-grid">
+          <div class="hero-copy">
+            <div class="pill-note reveal">
+              <b>Beta</b>
+              <!-- <span>Now testing across Aotearoa</span> -->
+               <span>Coming soon</span>
+            </div>
+
+            <h1 class="reveal" data-delay="60">
+              Home starts<br />with a <span class="accent">swipe.</span>
+            </h1>
+
+            <p class="hero-sub reveal" data-delay="120">
+              KeeWe matches you with flats <em>and</em> flatmates near you. Swipe on the rooms you
+              like, match with the people you'd actually live with, then chat and book a viewing —
+              all in one app.
+            </p>
+
+            <div class="hero-cta reveal" data-delay="180">
+              <a class="btn btn-primary" href="#get-the-app">
+                Join the waitlist
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </a>
+              <a class="btn btn-ghost" href="#how">See how it works</a>
+            </div>
+
+            <p class="hero-fine reveal" data-delay="240">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" width="17" height="17" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+              Made in Aotearoa New Zealand
+            </p>
+          </div>
+
+          <!-- ---------- phone mockup ---------- -->
+          <div class="phone-stage reveal" data-delay="140">
+            <div class="phone-glow" aria-hidden="true"></div>
+
+            <div class="float-card fc-match" aria-hidden="true">
+              <div class="fc-ico">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 1 0-7.8 7.8l8.8 8.8 8.8-8.8a5.5 5.5 0 0 0 0-7.8z"/></svg>
+              </div>
+              <div>
+                <strong>It's a match!</strong>
+                <small>Say kia ora to Maia</small>
+              </div>
+            </div>
+
+            <div class="float-card fc-viewing" aria-hidden="true">
+              <div class="fc-ico">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="16" rx="3"/><path d="M8 2.5v4M16 2.5v4M3 10h18"/></svg>
+              </div>
+              <div>
+                <strong>Viewing booked</strong>
+                <small>Saturday, 11:00am</small>
+              </div>
+            </div>
+
+            <div class="phone">
+              <div class="notch" aria-hidden="true"></div>
+              <div class="phone-screen">
+                <div class="app-bar">
+                  <span class="app-title">
+                    <img src="./assets/logo-mark.png" alt="" width="19" />
+                    KeeWe
+                  </span>
+                  <span class="app-bar-action" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 7h13M19 7h2M3 17h5M11 17h10"/><circle cx="17.5" cy="7" r="2.2"/><circle cx="9.5" cy="17" r="2.2"/></svg>
+                  </span>
+                </div>
+
+                <div class="deck">
+                  <!-- card 1 — a room -->
+                  <article class="swipe-card">
+                                          <span class="overlay overlay-yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 21H4.5A1.5 1.5 0 0 1 3 19.5v-8A1.5 1.5 0 0 1 4.5 10H7"/><path d="M7 10.5 12 3a2.4 2.4 0 0 1 2.4 2.4V9h4.3a2 2 0 0 1 2 2.4l-1.3 7A2 2 0 0 1 16.4 20H7z"/></svg>Like</span>
+                      <span class="overlay overlay-no"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3h2.5A1.5 1.5 0 0 1 21 4.5v8a1.5 1.5 0 0 1-1.5 1.5H17"/><path d="M17 13.5 12 21a2.4 2.4 0 0 1-2.4-2.4V15H5.3a2 2 0 0 1-2-2.4l1.3-7A2 2 0 0 1 7.6 4H17z"/></svg>Nope</span>
+                    <div class="art">
+                      <svg viewBox="0 0 288 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+                        <defs>
+                          <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+                            <stop offset="0%" stop-color="#8b1ef0"/><stop offset="55%" stop-color="#5c05b4"/><stop offset="100%" stop-color="#2c0060"/>
+                          </linearGradient>
+                        </defs>
+                        <rect width="288" height="400" fill="url(#g1)"/>
+                        <circle cx="216" cy="60" r="27" fill="#ffb020" opacity=".92"/>
+                        <path d="M-10 250 Q62 206 150 238 T300 212V410H-10Z" fill="#ffffff" opacity=".07"/>
+                        <g stroke="#fff" stroke-width="7" fill="none" stroke-linejoin="round" opacity=".95">
+                          <path d="M58 150 144 82l86 68v106a10 10 0 0 1-10 10H68a10 10 0 0 1-10-10z"/>
+                        </g>
+                        <rect x="92" y="170" width="42" height="38" rx="5" fill="#ffd98a"/>
+                        <rect x="154" y="170" width="42" height="38" rx="5" fill="#ffd98a" opacity=".55"/>
+                        <rect x="126" y="224" width="36" height="42" rx="4" fill="#ffffff" opacity=".5"/>
+                        <path d="M198 266c0-19 9-34 21-34s21 15 21 34z" fill="#0fbf87" opacity=".8"/>
+                        <rect x="210" y="264" width="18" height="16" rx="3" fill="#fff" opacity=".45"/>
+                      </svg>
+                      <div class="meta">
+                        <h4>Grey Lynn, Auckland</h4>
+                        <p class="price">$285 per week</p>
+                      </div>
+                    </div>
+                  </article>
+
+                  <!-- card 2 — a flatmate -->
+                  <article class="swipe-card">
+                                          <span class="overlay overlay-yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 21H4.5A1.5 1.5 0 0 1 3 19.5v-8A1.5 1.5 0 0 1 4.5 10H7"/><path d="M7 10.5 12 3a2.4 2.4 0 0 1 2.4 2.4V9h4.3a2 2 0 0 1 2 2.4l-1.3 7A2 2 0 0 1 16.4 20H7z"/></svg>Like</span>
+                      <span class="overlay overlay-no"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3h2.5A1.5 1.5 0 0 1 21 4.5v8a1.5 1.5 0 0 1-1.5 1.5H17"/><path d="M17 13.5 12 21a2.4 2.4 0 0 1-2.4-2.4V15H5.3a2 2 0 0 1-2-2.4l1.3-7A2 2 0 0 1 7.6 4H17z"/></svg>Nope</span>
+                    <div class="art">
+                      <svg viewBox="0 0 288 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+                        <defs>
+                          <linearGradient id="g2" x1="0" y1="0" x2="1" y2="1">
+                            <stop offset="0%" stop-color="#ff8a5c"/><stop offset="60%" stop-color="#f2543d"/><stop offset="100%" stop-color="#7a00e6"/>
+                          </linearGradient>
+                        </defs>
+                        <rect width="288" height="400" fill="url(#g2)"/>
+                        <circle cx="144" cy="150" r="86" fill="#fff" opacity=".13"/>
+                        <circle cx="144" cy="148" r="52" fill="#ffe4d2"/>
+                        <path d="M92 148a52 52 0 0 1 104 0c0-42-22-58-52-58s-52 16-52 58z" fill="#2c1a3a"/>
+                        <circle cx="128" cy="150" r="4.6" fill="#2c1a3a"/><circle cx="162" cy="150" r="4.6" fill="#2c1a3a"/>
+                        <path d="M132 170q13 11 26 0" stroke="#2c1a3a" stroke-width="4.6" fill="none" stroke-linecap="round"/>
+                        <path d="M56 400v-16c0-48 40-88 88-88s88 40 88 88v16z" fill="#fff" opacity=".9"/>
+                      </svg>
+                      <div class="meta">
+                        <h4>Maia, 24</h4>
+                        <p class="price">Looking in Te Aro, Wellington</p>
+                      </div>
+                    </div>
+                  </article>
+
+                  <!-- card 3 — a room -->
+                  <article class="swipe-card">
+                                          <span class="overlay overlay-yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 21H4.5A1.5 1.5 0 0 1 3 19.5v-8A1.5 1.5 0 0 1 4.5 10H7"/><path d="M7 10.5 12 3a2.4 2.4 0 0 1 2.4 2.4V9h4.3a2 2 0 0 1 2 2.4l-1.3 7A2 2 0 0 1 16.4 20H7z"/></svg>Like</span>
+                      <span class="overlay overlay-no"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3h2.5A1.5 1.5 0 0 1 21 4.5v8a1.5 1.5 0 0 1-1.5 1.5H17"/><path d="M17 13.5 12 21a2.4 2.4 0 0 1-2.4-2.4V15H5.3a2 2 0 0 1-2-2.4l1.3-7A2 2 0 0 1 7.6 4H17z"/></svg>Nope</span>
+                    <div class="art">
+                      <svg viewBox="0 0 288 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+                        <defs>
+                          <linearGradient id="g3" x1="0" y1="0" x2="1" y2="1">
+                            <stop offset="0%" stop-color="#19d6a0"/><stop offset="55%" stop-color="#0f9fbf"/><stop offset="100%" stop-color="#23004c"/>
+                          </linearGradient>
+                        </defs>
+                        <rect width="288" height="400" fill="url(#g3)"/>
+                        <path d="M-10 248 Q70 204 152 238 T300 206V410H-10Z" fill="#ffffff" opacity=".08"/>
+                        <g fill="none" stroke="#fff" stroke-width="7" stroke-linejoin="round" opacity=".95">
+                          <path d="M48 142v114a10 10 0 0 0 10 10h172a10 10 0 0 0 10-10V142"/>
+                          <path d="M34 146 144 68l110 78"/>
+                        </g>
+                        <rect x="76" y="166" width="40" height="38" rx="5" fill="#ffd98a"/>
+                        <rect x="172" y="166" width="40" height="38" rx="5" fill="#ffd98a" opacity=".55"/>
+                        <rect x="126" y="216" width="36" height="50" rx="5" fill="#fff" opacity=".55"/>
+                        <circle cx="222" cy="58" r="9" fill="#fff" opacity=".55"/>
+                        <circle cx="198" cy="40" r="5.5" fill="#fff" opacity=".38"/>
+                      </svg>
+                      <div class="meta">
+                        <h4>Riccarton, Christchurch</h4>
+                        <p class="price">$230 per week</p>
+                      </div>
+                    </div>
+                  </article>
+                </div>
+
+                <div class="tabbar" aria-hidden="true">
+                  <span class="tab">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.6"/><path d="M4.6 20a7.4 7.4 0 0 1 14.8 0"/></svg>
+                    <em>Profile</em>
+                  </span>
+                  <span class="tab">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2.6"/><path d="M8 3v4M16 3v4M3 10h18"/></svg>
+                    <em>Viewings</em>
+                  </span>
+                  <span class="tab is-on">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="6.6"/><path d="m16 16 4.5 4.5"/></svg>
+                    <em>Search</em>
+                  </span>
+                  <span class="tab">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 1 0-7.8 7.8l8.8 8.8 8.8-8.8a5.5 5.5 0 0 0 0-7.8z"/></svg>
+                    <em>Matches</em>
+                  </span>
+                  <span class="tab">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 9.4 9.4 0 0 1-3.3-.6L3 21l1.8-4.9A8.2 8.2 0 0 1 3.6 11.5 8.4 8.4 0 0 1 12 3.1a8.4 8.4 0 0 1 9 8.4z"/></svg>
+                    <em>Chats</em>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= trust strip ================= -->
+      <section class="trust">
+        <div class="wrap trust-row">
+          <div class="trust-item reveal">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-6.3 7-11a7 7 0 1 0-14 0c0 4.7 7 11 7 11z"/><circle cx="12" cy="10" r="2.6"/></svg>
+            <div><strong>Distance first</strong><small>Sorted by what's actually near you</small></div>
+          </div>
+          <div class="trust-item reveal" data-delay="80">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 0 1 0 18 15 15 0 0 1 0-18z"/></svg>
+            <div><strong>Multilingual</strong><small>Use KeeWe in your own language</small></div>
+          </div>
+          <div class="trust-item reveal" data-delay="160">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 22V4.5S6 3 9 3s6 2 9 2v10c-3 0-6-2-9-2s-5 1.5-5 1.5"/></svg>
+            <div><strong>Report and block</strong><small>Safety tools on every profile</small></div>
+          </div>
+          <div class="trust-item reveal" data-delay="240">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7.5 3v5.6c0 4.6-3.1 8.2-7.5 9.4-4.4-1.2-7.5-4.8-7.5-9.4V6z"/><path d="M9.2 12.2 11.3 14.4 15 10.6"/></svg>
+            <div><strong>No in-app payments</strong><small>Rent and bond stay between you</small></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= how it works ================= -->
+      <section class="section-pad" id="how">
+        <div class="wrap">
+          <div class="head-center">
+            <span class="eyebrow reveal">How it works</span>
+            <h2 class="h-sec reveal" data-delay="60">Four steps from scrolling to signing.</h2>
+            <p class="sub reveal" data-delay="120">
+              No endless listing sites, no group chat with forty strangers, no waiting three days for
+              a reply that never comes.
+            </p>
+          </div>
+
+          <div class="steps">
+            <article class="step reveal">
+              <div class="step-n">01</div>
+              <h3>Build your profile</h3>
+            </article>
+            <article class="step reveal" data-delay="90">
+              <div class="step-n">02</div>
+              <h3>Swipe what's nearby</h3>
+            </article>
+            <article class="step reveal" data-delay="180">
+              <div class="step-n">03</div>
+              <h3>Match, then chat</h3>
+            </article>
+            <article class="step reveal" data-delay="270">
+              <div class="step-n">04</div>
+              <h3>Book a viewing</h3>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= features ================= -->
+      <section class="section-pad" id="features" style="padding-top: 0">
+        <div class="wrap">
+          <div class="head-center">
+            <span class="eyebrow reveal">Features</span>
+            <h2 class="h-sec reveal" data-delay="60">Built for how flatting really works.</h2>
+            <p class="sub reveal" data-delay="120">
+              Every filter, every screen and every notification exists because someone flat-hunting
+              at 11pm needed it.
+            </p>
+          </div>
+
+          <div class="bento">
+            <article class="card b-wide reveal">
+              <div class="card-ico">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16M7 12h10M10 18h4"/></svg>
+              </div>
+              <h3>Filter on what actually matters</h3>
+              <p>
+                Not just price and suburb. KeeWe filters on the details that decide whether a flat
+                works — and saves you the conversation that ends in "oh, sorry, no pets".
+              </p>
+            </article>
+
+            <article class="card card-dark b-half reveal" data-delay="90">
+              <div class="card-ico">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 9.4 9.4 0 0 1-3.3-.6L3 21l1.8-4.9A8.2 8.2 0 0 1 3.6 11.5 8.4 8.4 0 0 1 12 3.1a8.4 8.4 0 0 1 9 8.4z"/></svg>
+              </div>
+              <h3>Matches, not an inbox</h3>
+              <p>
+                Chat only when you've both are matched. No unsolicited messages,
+                no wall of enquiries to wade through, and a conversation that starts with two people
+                who already like the look of each other.
+              </p>
+            </article>
+
+            <article class="card b-third reveal">
+              <div class="card-ico">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4.5" width="18" height="16" rx="3"/><path d="M8 2.5v4M16 2.5v4M3 10h18"/><path d="M9 14.5l2 2 4-4"/></svg>
+              </div>
+              <h3>Book a viewing</h3>
+              <p>
+                Book viewings on availiable timeslots to view the place and room.
+              </p>
+            </article>
+
+            <article class="card b-third reveal" data-delay="90">
+              <div class="card-ico">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><circle cx="12" cy="12" r="8.5" stroke-dasharray="3 3.4"/></svg>
+              </div>
+              <h3>Set your own radius</h3>
+              <p>
+                Walk to uni, ten minutes from work, or anywhere in the city — you choose the
+                distance and KeeWe sorts by it.
+              </p>
+            </article>
+
+            <article class="card b-third reveal" data-delay="180">
+              <div class="card-ico">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h9M8.5 4v2M11 6c0 4-3.4 8-7 9M6.2 11.4C8 13.6 10.6 15.4 13 16.2"/><path d="M13.5 20l4-9 4 9M15 17h5"/></svg>
+              </div>
+              <h3>Multilingual</h3>
+              <p>
+                New here, or studying here? KeeWe is translated, so you can use the whole app in
+                your own language.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= who it's for ================= -->
+      <section class="section-pad" id="who" style="padding-top: 0">
+        <div class="wrap">
+          <div class="head-center">
+            <span class="eyebrow reveal">Who it's for</span>
+            <h2 class="h-sec reveal" data-delay="60">Two ways to KeeWe.</h2>
+            <p class="sub reveal" data-delay="120">
+              Whether you need a room or you need to fill one, it's the same swipe — and the same
+              match.
+            </p>
+          </div>
+
+          <div class="split">
+            <article class="side side-a reveal">
+              <span class="tag">Need a room</span>
+              <h3>Find a flat that gets you.</h3>
+              <p>
+                Students, first jobs, new city, fresh start. Say what you're after once and stop
+                repeating yourself in twelve different inboxes.
+              </p>
+              <ul class="ticks">
+                <li>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+                  Rooms near you, with the rent and bills up front
+                </li>
+                <li>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+                  See who you'd be living with before you message them
+                </li>
+                <li>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+                  Moving as a couple or a group? Say so on your profile
+                </li>
+                <li>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+                  Book a viewing in the app after you match
+                </li>
+              </ul>
+            </article>
+
+            <article class="side side-b reveal" data-delay="120">
+              <span class="tag">Got a room</span>
+              <h3>Fill it with someone decent.</h3>
+              <p>
+                List the room once. KeeWe puts it in front of people already looking in your suburb,
+                in your price range, who tick your flat's boxes.
+              </p>
+              <ul class="ticks">
+                <li>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+                  One listing: photos, rent, inclusions, availability
+                </li>
+                <li>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+                  Only hear from people you've swiped right on too
+                </li>
+                <li>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+                  Post your viewing times and let people pick a slot
+                </li>
+                <li>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+                  Take the listing down the second the room is gone
+                </li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= safety ================= -->
+      <section class="section-pad" id="safety" style="padding-top: 0">
+        <div class="wrap">
+          <div class="safety reveal">
+            <div class="head-center">
+              <span class="eyebrow">Safety &amp; privacy</span>
+              <h2>Swipe safely.</h2>
+              <p class="sub">
+                You're not picking a match for Friday night — you're picking who has a key to your
+                front door. We take that seriously.
+              </p>
+            </div>
+
+            <div class="safe-grid">
+              <article class="safe-item">
+                <div class="si-ico">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 22V4.5S6 3 9 3s6 2 9 2v10c-3 0-6-2-9-2s-5 1.5-5 1.5"/></svg>
+                </div>
+                <h4>Report and block</h4>
+              </article>
+
+              <article class="safe-item">
+                <div class="si-ico">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-6.3 7-11a7 7 0 1 0-14 0c0 4.7 7 11 7 11z"/><circle cx="12" cy="10" r="2.6"/></svg>
+                </div>
+                <h4>Your location stays yours</h4>
+              </article>
+
+              <article class="safe-item">
+                <div class="si-ico">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="5.5" width="19" height="13" rx="3"/><path d="M2.5 10h19"/><path d="M6.5 14.8h4"/></svg>
+                </div>
+                <h4>No rent or bond in the app</h4>
+              </article>
+
+              <article class="safe-item">
+                <div class="si-ico">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7.5 3v5.6c0 4.6-3.1 8.2-7.5 9.4-4.4-1.2-7.5-4.8-7.5-9.4V6z"/></svg>
+                </div>
+                <h4>Sixteen and over</h4>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= FAQ ================= -->
+      <section class="section-pad" id="faq" style="padding-top: 0">
+        <div class="wrap">
+          <div class="head-center">
+            <span class="eyebrow reveal">FAQ</span>
+            <h2 class="h-sec reveal" data-delay="60">Good questions.</h2>
+          </div>
+
+          <div class="faq reveal" data-delay="120">
+            <details open>
+              <summary>How does KeeWe decide what to show me?</summary>
+              <div class="answer">
+                <p>
+                  By your own settings. You set the area you're looking in, your rent range, how
+                  long you want to stay, and your deal-breakers on things like pets, smoking and
+                  parking. KeeWe shows you the rooms and people that fit, nearest first.
+                </p>
+              </div>
+            </details>
+
+            <details>
+              <summary>Where does KeeWe work?</summary>
+              <div class="answer">
+                <p>
+                  Curretly KeeWe is built for Aotearoa, New Zealand — Auckland, Wellington, Christchurch,
+                  Dunedin, Hamilton and everywhere in between. Because everything is sorted by
+                  distance from you, the app is at its best where there are flats to find.
+                </p>
+              </div>
+            </details>
+
+            <details>
+              <summary>Can other people see my address or exact location?</summary>
+              <div class="answer">
+                <p>
+                  No. Your device's coordinates are used to work out which listings fall inside the
+                  area you're searching, and that's all. They're never shown to another user.
+                </p>
+                <p>
+                  If you list a room, the property address is part of that listing — that one is
+                  your call, and you can take the listing down whenever you like.
+                </p>
+              </div>
+            </details>
+
+            <details>
+              <summary>Do I pay rent or bond through the app?</summary>
+              <div class="answer">
+                <p>
+                  No. KeeWe introduces people; the tenancy itself is between you and the landlord or
+                  head tenant, exactly as it would be otherwise. Rent and bond are never collected
+                  or held by KeeWe.
+                </p>
+              </div>
+            </details>
+
+            <details>
+              <summary>How old do I have to be?</summary>
+              <div class="answer">
+                <p>
+                  Sixteen. That's the minimum age for both the app and our terms, and it lines up
+                  with the age at which you can be a party to a residential tenancy in New Zealand.
+                </p>
+              </div>
+            </details>
+
+            <details>
+              <summary>What if someone isn't who they say they are?</summary>
+              <div class="answer">
+                <p>
+                  Report them. Every profile and every chat has a report option, and blocking takes
+                  effect immediately — they disappear from your deck and can't message you again.
+                </p>
+                <p>
+                  Reports are read by a real person and assessed against our terms. We never tell
+                  the reported user who made the report.
+                </p>
+              </div>
+            </details>
+
+            <details>
+              <summary>Can I use KeeWe in another language?</summary>
+              <div class="answer">
+                <p>
+                  Yes. KeeWe is multilingual — pick your language in Settings and the whole app
+                  follows, from the search filters to your listing.
+                </p>
+              </div>
+            </details>
+
+            <details>
+              <summary>When can I actually get it?</summary>
+              <div class="answer">
+                <p>
+                  KeeWe is built and heading into App Store review. Join the waitlist below and we'll
+                  email you the moment it's live — nothing else, no newsletter.
+                </p>
+                <p>
+                  If you'd rather not wait, the beta programme opens first. We're after a small group
+                  of real flats and real flat-hunters to use KeeWe properly and tell us what breaks.
+                </p>
+              </div>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= download ================= -->
+      <section class="section-pad" id="get-the-app" style="padding-top: 0">
+        <div class="wrap">
+          <div class="download reveal">
+            <img class="dl-icon" src="./assets/app-icon.png" alt="The KeeWe app icon" width="84" height="84" />
+            <h2>Get KeeWe.</h2>
+            <p class="sub">
+              KeeWe is finished and heading into App Store review. Put your name down and we'll tell
+              you the moment it lands — or come and break it for us first.
+            </p>
+
+            <div class="join-grid">
+              <article class="join-card">
+                <div class="jc-top">
+                  <div class="jc-ico">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 8.5a6 6 0 1 0-12 0c0 6-2.4 7.5-2.4 7.5h16.8S18 14.5 18 8.5z"/><path d="M13.7 20a2 2 0 0 1-3.4 0"/></svg>
+                  </div>
+                  <span class="jc-tag is-open">Open to everyone</span>
+                </div>
+                <h3>Join the waitlist</h3>
+                <p>
+                  One email, on launch day, telling you KeeWe is live on the App Store and Google
+                  Play. That's the whole deal — no newsletter, no drip campaign.
+                </p>
+                <!-- WAITLIST-FORM — replace href with your Google Form link -->
+                <a
+                  class="btn btn-primary"
+                  href="https://forms.gle/dG5GLDD6kXpuAwjV9"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  Join the waitlist
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" width="17" height="17" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                </a>
+              </article>
+
+              <article class="join-card is-beta">
+                <div class="jc-top">
+                  <div class="jc-ico">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.5 3v6.2L4.3 18a2 2 0 0 0 1.7 3h12a2 2 0 0 0 1.7-3l-5.2-8.8V3"/><path d="M8 3h8M7.2 15h9.6"/></svg>
+                  </div>
+                  <span class="jc-tag">Limited places</span>
+                </div>
+                <h3>Join the beta programme</h3>
+                <p>
+                  Use KeeWe before anyone else, with your actual flat or your actual flat hunt, and
+                  tell us what's broken. We read every bit of it.
+                </p>
+                <!-- BETA-FORM — replace href with your Google Form link -->
+                <a
+                  class="btn btn-ghost"
+                  href="https://forms.gle/KN6CyrmuACdSKK7y9"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  Apply for the beta
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" width="17" height="17" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                </a>
+              </article>
+            </div>
+
+            <div class="store-row">
+              <!-- APPSTORE-LINK — swap this block for a real <a href="..."> when the app is live -->
+              <span class="store-badge is-soon">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.4 12.8c0-2.2 1.8-3.3 1.9-3.4-1-1.5-2.6-1.7-3.2-1.7-1.4-.1-2.7.8-3.4.8-.7 0-1.8-.8-2.9-.8-1.5 0-2.9.9-3.7 2.2-1.6 2.7-.4 6.8 1.1 9 .8 1.1 1.6 2.3 2.8 2.3 1.1 0 1.5-.7 2.9-.7 1.3 0 1.7.7 2.9.7 1.2 0 2-1.1 2.7-2.2.9-1.2 1.2-2.5 1.2-2.5s-2.3-.9-2.3-3.7zM14.2 5.9c.6-.8 1-1.8.9-2.9-.9 0-2 .6-2.6 1.4-.6.7-1.1 1.7-.9 2.8 1 .1 2-.5 2.6-1.3z"/></svg>
+                <span>
+                  <small>Download on the</small>
+                  <strong>App Store</strong>
+                </span>
+                <span class="soon-tag">Soon</span>
+              </span>
+
+              <!-- PLAYSTORE-LINK — swap this block for a real <a href="..."> when the app is live -->
+              <span class="store-badge is-soon">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3.6 2.3c-.3.3-.5.8-.5 1.4v16.6c0 .6.2 1.1.5 1.4l.1.1 9.3-9.3v-.2L3.7 2.2l-.1.1zm12.5 6.2L4.4 1.8l-.2-.1 9.1 9.1 2.8-2.3zM4.2 22.3l.2-.1 11.7-6.7-2.8-2.3-9.1 9.1zm13.5-9.4 2.8-1.6c.9-.5.9-1.3 0-1.8l-2.8-1.6-3 2.5 3 2.5z"/></svg>
+                <span>
+                  <small>Get it on</small>
+                  <strong>Google Play</strong>
+                </span>
+                <span class="soon-tag">Soon</span>
+              </span>
+            </div>
+
+            <p class="beta-note">
+              Got a room, or a whole flat, you could test it with?
+              <a href="mailto:hello@keewe.co.nz?subject=KeeWe%20beta">Email us</a> instead.
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ================= footer ================= -->
+    <footer class="site-footer">
+      <div class="wrap">
+        <div class="foot-grid">
+          <div class="foot-brand">
+            <a class="brand" href="./">
+              <img src="./assets/logo-mark.png" alt="" width="34" />
+              KeeWe
+            </a>
+            <p>
+              Flats and flatmates, matched. Built in Aotearoa for anyone who has ever refreshed a
+              listings page at midnight.
+            </p>
+          </div>
+
+          <div class="foot-col">
+            <h4>App</h4>
+            <ul>
+              <li><a href="#how">How it works</a></li>
+              <li><a href="#features">Features</a></li>
+              <li><a href="#who">Who it's for</a></li>
+              <li><a href="#get-the-app">Get the app</a></li>
+            </ul>
+          </div>
+
+          <div class="foot-col">
+            <h4>Legal</h4>
+            <ul>
+              <li><a href="./privacy-policy.html">Privacy Policy</a></li>
+              <li><a href="#safety">Safety</a></li>
+              <li><a href="#faq">FAQ</a></li>
+            </ul>
+          </div>
+
+          <div class="foot-col">
+            <h4>Contact</h4>
+            <ul>
+              <li><a href="mailto:hello@keewe.co.nz">hello@keewe.co.nz</a></li>
+              <li><a href="mailto:privacy@keewe.co.nz">privacy@keewe.co.nz</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="foot-bottom">
+          <span>© <span data-year>2026</span> KeeWe. All rights reserved.</span>
+          <span class="made">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 1 0-7.8 7.8l8.8 8.8 8.8-8.8a5.5 5.5 0 0 0 0-7.8z"/></svg>
+            Made in Aotearoa New Zealand
+          </span>
+        </div>
+      </div>
+    </footer>
+
+    <script src="./assets/site.js" defer></script>
   </body>
 </html>
