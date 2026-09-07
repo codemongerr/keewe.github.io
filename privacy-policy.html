@@ -37,15 +37,8 @@
     rel="stylesheet" />
   <link rel="stylesheet" href="./assets/site.css" />
 
-  <!-- language switching: assets/lang/<code>.js holds the translations -->
-  <script src="./assets/i18n.js"></script>
-
-  <link rel="alternate" hreflang="x-default" href="https://www.keewe.co.nz/privacy-policy.html" />
-  <link rel="alternate" hreflang="en" href="https://www.keewe.co.nz/privacy-policy.html" />
-  <link rel="alternate" hreflang="mi" href="https://www.keewe.co.nz/privacy-policy.html?lang=mi" />
-  <link rel="alternate" hreflang="zh" href="https://www.keewe.co.nz/privacy-policy.html?lang=cn" />
-  <link rel="alternate" hreflang="es" href="https://www.keewe.co.nz/privacy-policy.html?lang=es" />
-  <link rel="alternate" hreflang="ja" href="https://www.keewe.co.nz/privacy-policy.html?lang=ja" />
+  <!-- Deliberately no assets/i18n.js: this page is served in English only, so
+       the switcher is not injected and the data-i18n markup stays inert. -->
 </head>
 
 <body>
@@ -1283,6 +1276,12 @@
             <li>
               <div class="cl"><span class="n">20.9</span>
                 <div class="t" data-i18n="pp.20.9">An account may be deleted at any time through the settings of the Platform.</div>
+              </div>
+            </li>
+            <li>
+              <div class="cl"><span class="n">20.10</span>
+                <div class="t" data-i18n="pp.20.10">Step-by-step instructions, and what deletion removes, are set out on our
+                  <a href="./data-deletion.html">Data Deletion</a> page.</div>
               </div>
             </li>
           </ul>
